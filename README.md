@@ -40,4 +40,4 @@ crunch 8 8 abcdefghijklmnopqrstuvqxyz | aircrack-ng -0 -e "THEAPANAME" -w - /SOM
 ```/usr/lib/hashcat-utils/combinator.bin /usr/share/wordlists/rockyou.txt /usr/share/wordlists/rockyou.txt  |aircrack-ng -0 -e "THEAPANAME" -w - SOMEPATH/THECAPTURENAME.cap```
 
 
-All of the above may produce 0 results and take a looong time to do so, however if weak words, patterns or weak words joined are used then the above will yield a result eventually......maybe......?
+All of the above may produce 0 results and take a looong time to do so, however if weak words/pairs of words or weak default patterns are used then the above will yield a result eventually......maybe......hopefully......who knows......?
