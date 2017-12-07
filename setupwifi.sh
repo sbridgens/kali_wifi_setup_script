@@ -3,21 +3,28 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+
+if [ -z "$1" ]
+  then
+    echo -e "${RED}Please specify an interface ie: ./thisscript.sh wlan0${NC}"
+    exit 1
+fi
+
 echo -e "${GREEN}[+] SETTING TX POWER TO 30db${NC}"
 iw reg set US
 echo -e "${RED}[+] Killing non needed services${NC}"
 airmon-ng check kill
-echo -e "${GREEN}[+] STARTING WLAN0 IN MONITOR MODE${NC}"
-airmon-ng start wlan0
-echo -e "${RED}[+] SETTING WLAN0MON DOWN FOR MAC CHANGER....${NC}"
-ifconfig wlan0mon down
+echo -e "${GREEN}[+] STARTING ${1} IN MONITOR MODE${NC}"
+airmon-ng start ${1}
+echo -e "${RED}[+] SETTING ${1}MON DOWN FOR MAC CHANGER....${NC}"
+ifconfig ${1}mon down
 echo -e "${RED}[+] CHANGING MAC ADDRESS${NC}"
-macchanger -r wlan0mon
+macchanger -r ${1}mon
 echo ""
-echo -e "${GREEN}[+] BRINGING UP WLAN0${NC}"
-ifconfig wlan0mon up
+echo -e "${GREEN}[+] BRINGING UP ${1}${NC}"
+ifconfig ${1}mon up
 echo -e "${GREEN}[+] Check that the tx-power is 30 dBm before continuing, else check the setup..${NC}"
-iwconfig wlan0mon
+iwconfig ${1}mon
 
 sleep 3
 echo -e "${GREEN}"
@@ -27,7 +34,7 @@ while true; do
     case $ynq in
         [yY]* )  
             echo -e "${GREEN}[+] Starting airodump-ng${NC}"
-            airodump-ng wlan0mon --wps --manufacturer
+            airodump-ng ${1}mon --wps --manufacturer
             break
             ;;
         [nN]* )
