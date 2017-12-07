@@ -27,7 +27,7 @@ while true; do
     case $ynq in
         [yY]* )  
             echo -e "${GREEN}[+] Starting airodump-ng${NC}"
-            airodump-ng wlan0mon
+            airodump-ng wlan0mon --wps --manufacturer
             break
             ;;
         [nN]* )
