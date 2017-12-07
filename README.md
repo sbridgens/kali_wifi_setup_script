@@ -1,5 +1,7 @@
-# kali_wifi_setup_script
-A basic script to bring a wlan0 interface up to monitor mode and start airodump-ng if required
+# kali wifi setup script
+
+Just a basic script to bring a wlan0 interface up to monitor mode and start airodump-ng if required, once you have the interface running in monitor mode, then running airodump-ng you can use the process below in order to capture wireless data and aim to crack the wpa password.
+
 
 Route to capture wpa handshake
 
